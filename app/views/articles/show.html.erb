@@ -3,4 +3,8 @@
 
 <p>Creato il: <%=@article.created_at %></p>
 
+<p><%= link_to "Edit", edit_article_path(@article) %></p>
+<p><%= link_to "Delete", article_path(@article), 
+            data: { turbo_method: :delete, turbo_confirm: "Sei sicuro di voler eliminare questo articolo?" } %></p>
+
 <%= link_to "Torna alla lista", articles_path %>
