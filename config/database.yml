@@ -11,9 +11,18 @@ test:
   <<: *default
   database: storage/test.sqlite3
 
-# Questa è l'unica parte che cambia per Render
 production:
-  adapter: postgresql
-  encoding: unicode
-  url: <%= ENV['DATABASE_URL'] %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  primary:
+    adapter: postgresql
+    encoding: unicode
+    url: <%= ENV['DATABASE_URL'] %>
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  cache:
+    <<: *primary
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary
+    migrations_paths: db/cable_migrate
