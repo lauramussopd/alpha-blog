@@ -1,24 +1,38 @@
+<%# Gestione errori con stile Bootstrap "alert" %>
 <% if @article.errors.any? %>
-<h2>The error cannot be saved</h2>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+  <div class="alert alert-danger shadow-sm">
+    <h4 class="alert-heading">Attenzione! <%= pluralize(@article.errors.count, "errore") %> ha impedito il salvataggio:</h4>
+    <ul class="mb-0">
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%# Inizio Card del Form %>
+<div class="card shadow-sm border-0 mt-4">
+  <div class="card-body p-4">
+    <%= form_with model: @article, local: true do |f| %>
+      
+      <div class="mb-3">
+        <%= f.label :title, class: "form-label fw-bold" %>
+        <%= f.text_field :title, class: "form-control form-control-lg", placeholder: "Inserisci il titolo..." %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :description, class: "form-label fw-bold" %>
+        <%= f.text_area :description, class: "form-control", rows: 5, placeholder: "Scrivi qui la descrizione..." %>
+      </div>
+
+      <div class="d-grid gap-2 mt-4">
+        <%= f.submit class: "btn btn-primary btn-lg" %>
+      </div>
     <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model: @article, local: true do |f| %>
-  <div>
-    <%= f.label :title %><br/>
-    <%= f.text_field :title %>
   </div>
+</div>
 
-  <div>
-    <%= f.label :description %><br/>
-    <%= f.text_area :description %>
-  </div>
-
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+<%# Link di navigazione inferiore %>
+<div class="text-center mt-3">
+  <%= link_to "Annulla e torna alla lista", articles_path, class: "text-decoration-none text-muted" %>
+</div>

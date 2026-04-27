@@ -1,10 +1,6 @@
 @import "bootstrap";
 
 .hero-image {
-  /* Sostituisci il link con la tua immagine */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/your-image-url');
-  background-size: cover;
-  background-position: center;
   min-height: 400px;
   display: flex;
   align-items: center;
