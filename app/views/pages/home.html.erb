@@ -1,2 +1,11 @@
-<h1>Pages#home</h1>
-<%= link_to "Go to Articles", articles_path %> | <%= link_to "Go to about", about_path %> 
+<div class="p-5 mb-4 bg-light rounded-3 border">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Alpha Blog</h1>
+    <p class="col-md-8 fs-4">Benvenuto nel mio blog personale. Qui troverai articoli interessanti e altro ancora.</p>
+    
+    <div class="d-grid gap-2 d-md-block">
+      <%= link_to "Go to Articles", articles_path, class: "btn btn-primary btn-lg" %>
+      <%= link_to "Go to About", about_path, class: "btn btn-outline-secondary btn-lg" %>
+    </div>
+  </div>
+</div>

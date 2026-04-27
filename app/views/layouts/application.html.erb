@@ -23,8 +23,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <%= render "layouts/messages" %>
-    <%= yield %>
+    <%= render "layouts/navigation" %>
+
+    <%# Questo div centrale deve espandersi per spingere il footer in giù %>
+    <div class="container mt-4 flex-grow-1">
+      <%= yield %> 
+    </div>
+
+    <%= render 'layouts/footer' %>
   </body>
 </html>
